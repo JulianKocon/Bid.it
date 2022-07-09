@@ -8,11 +8,11 @@ namespace Bid.it.Models
     {
         public Auction()
         {
-            AuctionName = AuctionId.ToString();
+            AuctionName = IdAuction.ToString();
         }
 
         [Key]
-        public int AuctionId { get; set; }
+        public int IdAuction { get; set; }
 
         public string IdApplicationUser { get; set; }
 
@@ -39,5 +39,7 @@ namespace Bid.it.Models
 
         public bool IsAvailable { get; set; }
         public virtual ICollection<PurchaseHistory> PurchaseHistories { get; set; }
+
+        public virtual ICollection<FollowedAuction> FollowedAuctions { get; set; }
     }
 }

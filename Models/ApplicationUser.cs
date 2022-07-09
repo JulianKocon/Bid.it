@@ -15,5 +15,7 @@ namespace Bid.it.Models
 
         public virtual ICollection<Auction> Auctions { get; set; }
         public virtual ICollection<PurchaseHistory> PurchaseHistories { get; set; }
+
+        public virtual ICollection<FollowedAuction> FollowedAuctions { get; set; }
     }
 }

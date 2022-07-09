@@ -13,10 +13,16 @@ public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     public DbSet<ApplicationUser> ApplicationUsers { get; set; }
     public DbSet<Auction> Auctions { get; set; }
     public DbSet<PurchaseHistory> PurchaseHistories { get; set; }
-    protected internal virtual void OnModelCreating(ModelBuilder modelBuilder)
+    public DbSet<FollowedAuction> FollowedAuctions { get; set; }
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
+        base.OnModelCreating(modelBuilder);
         modelBuilder.Entity<ApplicationUser>().ToTable("ApplicationUser");
         modelBuilder.Entity<Auction>().ToTable("Auction");
+        modelBuilder.Entity<PurchaseHistory>().ToTable("PurchaseHistory");
+        modelBuilder.Entity<FollowedAuction>().ToTable("FollowedAuction");
 
+        modelBuilder.Entity<FollowedAuction>()
+            .HasKey(x => new { x.IdUser, x.IdAuction });
     }
 }
