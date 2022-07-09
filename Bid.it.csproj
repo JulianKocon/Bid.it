@@ -13,6 +13,22 @@
     <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="6.0.5" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="6.0.5" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="6.0.5" />
+    <PackageReference Include="MediatR" Version="10.0.1" />
+    <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="10.0.1" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Remove="MediatR" />
+    <None Remove="MediatR.Extensions.Microsoft.DependencyInjection" />
+    <None Remove="Functions\" />
+    <None Remove="Functions\Querys\" />
+    <None Remove="Functions\Commands\" />
+    <None Remove="Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Functions\" />
+    <Folder Include="Functions\Querys\" />
+    <Folder Include="Functions\Commands\" />
+    <Folder Include="Services\" />
+  </ItemGroup>
 </Project>
