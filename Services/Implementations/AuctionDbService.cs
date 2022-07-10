@@ -17,6 +17,15 @@ namespace Bid.it.Services.Implementations
         {
             return await _context.Auctions.ToListAsync();
         }
+
+        public async Task<List<Auction>> GetFollowedAuctions(string? username)
+        {
+            var userId = await _context.ApplicationUsers.SingleOrDefaultAsync(x => x.UserName == username);
+
+            return await _context.Auctions
+                .Include(x => x.FollowedAuctions.Where(x => x.IdUser.Equals(userId)))
+                .ToListAsync();
+        }
     }
 }
 
