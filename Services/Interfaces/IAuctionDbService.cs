@@ -8,6 +8,7 @@ namespace Bid.it.Services.Interfaces
     {
         Task<List<Auction>> GetAuctions();
         Task<List<Auction>> GetFollowedAuctions(string? username);
+        Task<Auction> GetAuction(int idAuction);
     }
 }
 

@@ -15,13 +15,13 @@ namespace Bid.it.Controllers
 		{
 			_mediator = mediator;
 		}
-		[HttpGet(Name = "GetAllAuctions")]
+		[HttpGet]
 		public async Task<ActionResult<List<Auction>>> GetAllAuctions()
 		{
 			var request = new GetAllAuctionsQuery();
 			var result = await _mediator.Send(request);
 
-			return result;
+			return View(result);
 		}
 
 		[HttpGet]
@@ -33,8 +33,20 @@ namespace Bid.it.Controllers
 			};
 			var result = await _mediator.Send(request);
 
-			return result;
+			return View(result);
 		}
+        [HttpGet]
+        [Route("{IdAuction}")]
+		public async Task<ActionResult<Auction>> GetAuction([FromRoute]int idAuction)
+        {
+			var request = new GetAuctionQuery
+			{
+				IdAuction = idAuction
+            };
+			var result = await _mediator.Send(request);
+
+			return View(result);
+        }
 	}
 }
 
