@@ -26,6 +26,10 @@ namespace Bid.it.Services.Implementations
                 .Include(x => x.FollowedAuctions.Where(x => x.IdUser.Equals(userId)))
                 .ToListAsync();
         }
+        public async Task<Auction> GetAuction(int idAuction)
+        {
+            return await _context.Auctions.SingleOrDefaultAsync(a => a.IdAuction == idAuction);
+        }
     }
 }
 
